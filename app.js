@@ -2,7 +2,7 @@ const board = document.querySelector('#board');
 let cellColumns = [1];
 let cellRows = [1];
 let varOne = 1;
-
+let varTwo = 1;
 
 for (let cell of cellColumns) {
     if (cellColumns.length < 9) {
@@ -21,8 +21,10 @@ function renderColumns() {
     for (let booger of a){
         const buildRows = document.createElement('div');
         buildColumns.append(buildRows);
-        buildRows.classList.add('row-class');
-        
+        buildRows.classList.add(`row-class-${varTwo}`);
+        varTwo++;   
+    } if (varTwo > 8) {
+        varTwo = 1;
     }
     return buildColumns;
 }
