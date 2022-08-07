@@ -1,15 +1,30 @@
 const board = document.querySelector('#board');
 let cells = 64;
+let classAdd = 1;
+let num = 0;
 
 for (let i = 0; i < cells; i++) {
     renderCells();
+    classAdd++;
+    if (num !== 8) {
+        num++;
+    } else {
+        num = 1
+    }
+    console.log(num);
 }
+
+
 function renderCells() {
     const cell = document.createElement('div');
-
-    cell.classList.add('row-class-1');
+    
+    cell.classList.add(`cell-class`);
+    cell.classList.add(`0${classAdd}`);
+   
     board.append(cell);
+    return cell;
 }
+
 
 
 
