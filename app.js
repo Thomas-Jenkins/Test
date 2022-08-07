@@ -1,29 +1,25 @@
+import { renderFighterCard } from "./render-fighters.js"; 
+import { fighterTemplate } from "./fighter-data.js";
+import { renderCells } from "./render-board.js";
+import { renderFighter } from "./render-fighters.js";
 const board = document.querySelector('#board');
+const ui = document.querySelector('#ui');
+
 let cells = 64;
-let classAdd = 1;
-let num = 0;
+
 
 for (let i = 0; i < cells; i++) {
     renderCells();
-    classAdd++;
-    if (num !== 8) {
-        num++;
-    } else {
-        num = 1
-    }
-    console.log(num);
 }
+renderFighterCard();
+
+// renderFighter();
+
+// renderFighter(loc);
 
 
-function renderCells() {
-    const cell = document.createElement('div');
-    
-    cell.classList.add(`cell-class`);
-    cell.classList.add(`0${classAdd}`);
-   
-    board.append(cell);
-    return cell;
-}
+
+
 
 
 

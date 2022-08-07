@@ -1,3 +1,7 @@
+main {
+    display: grid;
+    grid-template-rows: 1002;
+}
 #gameboard {
     display: grid;
     border: 1px solid black;
@@ -18,4 +22,38 @@
 
 .cell-class {
     border: 1px solid black;
+    margin: .5px;
+}
+#ui {
+    display: grid;
+    grid-template-columns: 199px 199px 199px 199px;
+    border: 3px solid Black;
+    width: 796px;
+    height: 200px;
+    margin-top: 2px;
+}
+#unit-card {
+    display: grid;
+    border: 1px solid black;
+    margin: 2px;
+    grid-template-rows: ;
+}
+.unit-card {
+    display: grid;
+    border: 1px solid black;
+    margin: 2px;
+    grid-template-rows: ;
+}
+.unit-stats p {
+    width: fit-content;
+    margin: 2px;
+}
+#unit-resources p {
+    width: fit-content;
+    margin: 2px;
+}
+.fighter-image {
+    width: 96px;
+    border-radius: 48px;
+    background-image: url('/assets/Fighter\ token.jpg') ;
 }
