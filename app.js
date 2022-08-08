@@ -1,53 +1,20 @@
 const board = document.querySelector('#board');
 const ui = document.querySelector('#ui');
 import { fighters } from './fighter-data.js';
+import { renderCells } from './render-board.js';
+import { click } from './render-board.js';
 
-let temp = '1-1';
-let numOne = 0;
-let numTwo = 1;
-let click = ['1-1'];
 
 
 for (let i = 0; i < 64; i++) {
     renderCells();
 }
-renderFighterCard();
-renderFighter();
-
-function renderCells() {
-    const cell = document.createElement('div');
-    cell.classList.add(`cell-class`);
-    if (numOne !== 8) {
-        numOne++;
-    } else {
-        numOne = 1
-        numTwo++;
-    }
-    cell.setAttribute(`id`, `${numTwo}` + `-` + `${numOne}`);
+for (let fighter of fighters) {
+    renderFighter(fighter);
     
-    cell.addEventListener('click', () => {
-        click.push(cell.id);
-        if(click.length > 3) {
-            click.shift();
-        }
-        console.log(click);
-        renderFighter();
-        
-        deRenderFighter();
-        return click;
-        
-    });
-    board.append(cell);
 }
 
-function displayFighter() {
-    for (let fighter of fighters) {
-        const fighterEl = renderFighter(fighter);
-
-    }
-}
-
-function renderFighterCard() {
+function renderFighter(fighter) {
     const fighterCard = document.createElement('div');
     const fighterName = document.createElement('div');
     const fighterStats = document.createElement('div');
@@ -59,14 +26,10 @@ function renderFighterCard() {
     const fighterMove = document.createElement('button');
     const fighterAttack = document.createElement('button');
     const fighterOther = document.createElement('button');
-
-    fighterCard.classList.add('unit-card');
-    
-
-    fighterName.textContent = fighters.name;
-    fighterHP.textContent = `HP: `;
-    fighterDef.textContent = 'Def: 12'
-    fighterActionPoints.textContent = 'Action Points: 2/2';
+    fighterName.textContent = fighter.name;
+    fighterHP.textContent = `HP: ${fighter.health}`;
+    fighterDef.textContent = `Def: ${fighter.defense}`
+    fighterActionPoints.textContent = `Action Points: ${fighter.actionPoints}`;
     fighterMove.textContent = 'Move';
     fighterAttack.textContent = 'Attack';
     fighterOther.textContent = '...'
@@ -77,32 +40,40 @@ function renderFighterCard() {
     fighterResources.append(fighterActionPoints);
     fighterButtons.append(fighterMove, fighterAttack, fighterOther);
     
+    fighterCard.classList.add('unit-card');  
+    displayFighter(fighter);  
+    
+    fighterMove.addEventListener('click', () => {
+        let too = click[click.length -1];
+        displayFighter(fighter);
+        unDisplayFighter(fighter);
+    });
 }
 
-function renderFighter(fighter) {
-    const lastLoc = click[click.length - 1];
+function displayFighter(fighter,){
     const fighterToken = document.createElement('div');
     const fighterImg = document.createElement('div');
-    const location = document.getElementById(`${lastLoc}`);
-    fighterToken.classList.add('fighter')
-    fighterImg.classList.add('fighter-image')
-    location.append(fighterToken);
+    const locationEl = document.getElementById(`${click[click.length -1] || fighter.startingLocation}`);
+    fighterToken.classList.add('fighter');
+    fighterToken.setAttribute('id', fighter.id);
+    fighterImg.classList.add('fighter-image');
+    locationEl.append(fighterToken);
     fighterToken.append(fighterImg);
-
     
-
+    
 }
-function deRenderFighter() {
-    const tick = click[click.length -2];
-    
-    const identity = document.getElementById(`${tick}`);
-    console.log(identity);
-    identity.removeChild(identity.firstChild);
-    
+
+function unDisplayFighter(fighter) {
+    const locationEl = document.getElementById(`${click[click.length -2]}`);
+    locationEl.removeChild(locationEl.firstChild);
 }
 
 
 
+// function findFighter(fighter){
+//     let fighterId = ;
+//     let currentLocation = ; 
+// }
 
 
 
@@ -114,35 +85,26 @@ function deRenderFighter() {
 
 
 
+// function renderFighter(fighter) {
+//     const lastLoc = location[location.length - 1];
+//     const fighterToken = document.createElement('div');
+//     const fighterImg = document.createElement('div');
+//     const locationEl = document.getElementById(`${lastLoc}`);
+//     fighterToken.classList.add('fighter')
+//     fighterImg.classList.add('fighter-image')
+//     locationEl.append(fighterToken);
+//     fighterToken.append(fighterImg);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+// }
+// function deRenderFighter() {
+//     const tick = click[click.length -2];
+    
+//     const identity = document.getElementById(`${tick}`);
+//     console.log(identity);
+//     identity.removeChild(identity.firstChild);
+    
+// }
 
 // renderFighter(loc);
 
