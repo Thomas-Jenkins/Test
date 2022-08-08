@@ -1,5 +1,6 @@
 const board = document.querySelector('#board');
 const ui = document.querySelector('#ui');
+import { fighters } from './fighter-data.js';
 
 let temp = '1-1';
 let numOne = 0;
@@ -26,7 +27,9 @@ function renderCells() {
     
     cell.addEventListener('click', () => {
         click.push(cell.id);
-        // click = [];
+        if(click.length > 3) {
+            click.shift();
+        }
         console.log(click);
         renderFighter();
         
@@ -37,7 +40,12 @@ function renderCells() {
     board.append(cell);
 }
 
+function displayFighter() {
+    for (let fighter of fighters) {
+        const fighterEl = renderFighter(fighter);
 
+    }
+}
 
 function renderFighterCard() {
     const fighterCard = document.createElement('div');
@@ -55,8 +63,8 @@ function renderFighterCard() {
     fighterCard.classList.add('unit-card');
     
 
-    fighterName.textContent = 'Fighter'
-    fighterHP.textContent = 'HP 10/10'
+    fighterName.textContent = fighters.name;
+    fighterHP.textContent = `HP: `;
     fighterDef.textContent = 'Def: 12'
     fighterActionPoints.textContent = 'Action Points: 2/2';
     fighterMove.textContent = 'Move';
@@ -71,7 +79,7 @@ function renderFighterCard() {
     
 }
 
-function renderFighter() {
+function renderFighter(fighter) {
     const lastLoc = click[click.length - 1];
     const fighterToken = document.createElement('div');
     const fighterImg = document.createElement('div');
@@ -80,6 +88,9 @@ function renderFighter() {
     fighterImg.classList.add('fighter-image')
     location.append(fighterToken);
     fighterToken.append(fighterImg);
+
+    
+
 }
 function deRenderFighter() {
     const tick = click[click.length -2];

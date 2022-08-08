@@ -1,6 +1,6 @@
 main {
     display: grid;
-    grid-template-rows: 1002;
+    grid-template-columns: 206px 802px 206px;
 }
 #gameboard {
     display: grid;
@@ -28,10 +28,10 @@ main {
 }
 #ui {
     display: grid;
-    grid-template-columns: 199px 199px 199px 199px;
+    grid-template-rows: 199px 199px 199px 199px;
     border: 3px solid Black;
-    width: 796px;
-    height: 200px;
+    width: 200px;
+    height: 796px;
     margin-top: 2px;
 }
 #unit-card {

@@ -1,4 +1,4 @@
-export const fighterTemplate = [
+export const fighters = [
     {
         name: 'Fighter',
         health: 10/10,
