@@ -21,6 +21,8 @@ main {
 }
 
 .cell-class {
+    display: grid;
+    grid-template-columns: 1fr;
     border: 1px solid black;
     margin: .5px;
 }
@@ -53,7 +55,13 @@ main {
     margin: 2px;
 }
 .fighter-image {
-    width: 96px;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    /* height: ; */
     border-radius: 48px;
-    background-image: url('/assets/Fighter\ token.jpg') ;
+    background-color: black;
+    background-image: url('/assets/Fighter-token.jpg');
+    background-position: center;
+    background-size: contain;
 }
