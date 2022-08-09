@@ -40,32 +40,37 @@ function renderFighter(fighter) {
     fighterResources.append(fighterActionPoints);
     fighterButtons.append(fighterMove, fighterAttack, fighterOther);
     
-    fighterCard.classList.add('unit-card');  
+    fighterCard.classList.add('unit-card'); 
+     
+    
     displayFighter(fighter);  
     
     fighterMove.addEventListener('click', () => {
-        let too = click[click.length -1];
+        let id = document.querySelector('.unit-card');
+        console.log(id);
         displayFighter(fighter);
-        unDisplayFighter(fighter);
+        unDisplayFighter(fighter, id);
     });
 }
 
 function displayFighter(fighter,){
     const fighterToken = document.createElement('div');
     const fighterImg = document.createElement('div');
-    const locationEl = document.getElementById(`${click[click.length -1] || fighter.startingLocation}`);
+    const startinglocData = fighter.startingLocation;
+    const startingLocation = document.getElementById(`${startinglocData}`);    
     fighterToken.classList.add('fighter');
     fighterToken.setAttribute('id', fighter.id);
     fighterImg.classList.add('fighter-image');
-    locationEl.append(fighterToken);
+    startingLocation.append(fighterToken);
     fighterToken.append(fighterImg);
-    
-    
+    const currentLocation = fighterToken.parentElement.id;
+    fighter.previousLocation = currentLocation;
 }
 
-function unDisplayFighter(fighter) {
-    const locationEl = document.getElementById(`${click[click.length -2]}`);
-    locationEl.removeChild(locationEl.firstChild);
+
+
+function unDisplayFighter(fighter, id) {
+    const fighterToken = document.getElementById(`fighter-${id}`);
 }
 
 

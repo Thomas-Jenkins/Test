@@ -6,9 +6,7 @@ export const fighters = [
         defense: 5,
         actionPoints: 3,
         startingLocation: '1-1',
-        previousLocation: [
-            
-        ]
+        previousLocation: ''
     },
     // {   
     //     id: 'fighter-2',
