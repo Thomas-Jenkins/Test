@@ -1,0 +1,67 @@
+main {
+    display: grid;
+    grid-template-columns: 206px 802px 206px;
+}
+#gameboard {
+    display: grid;
+    border: 1px solid black;
+    height: 800px;
+    width: 800px;
+    background-color: chocolate;
+    justify-items: center;
+    align-items: center;
+}
+#board {
+    display: grid;
+    grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
+    height: 97%;
+    width: 97%;
+    border: 1px solid black;
+    background-color:bisque
+}
+
+.cell-class {
+    display: grid;
+    grid-template-columns: 1fr;
+    border: 1px solid black;
+    margin: .5px;
+}
+#ui {
+    display: grid;
+    grid-template-rows: 199px 199px 199px 199px;
+    border: 3px solid Black;
+    width: 200px;
+    height: 796px;
+    margin-left: 2px;
+}
+#unit-card {
+    display: grid;
+    border: 1px solid black;
+    margin: 2px;
+    /* grid-template-rows: ; */
+}
+.unit-card {
+    display: grid;
+    border: 1px solid black;
+    margin: 2px;
+    /* grid-template-rows: ; */
+}
+.unit-stats p {
+    width: fit-content;
+    margin: 2px;
+}
+#unit-resources p {
+    width: fit-content;
+    margin: 2px;
+}
+.fighter-image {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    /* height: ; */
+    border-radius: 48px;
+    background-color: black;
+    background-image: url('/assets/Fighter-token.jpg');
+    background-position: center;
+    background-size: contain;
+}
